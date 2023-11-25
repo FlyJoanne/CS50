@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Orders
+{% endblock %}
+
+{% block main %}
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Shares</th>
+            <th>Order time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{order["type"]}}</td>
+            <td>{{order["symbol"]}}</td>
+            <td>{{usd(order["price"])}}</td>
+            <td>{{order["shares"]}}</td>
+            <td>{{order["dertime"] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

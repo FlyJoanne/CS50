@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded',function(){  <!--以确保在运行任何 JavaScript 代码之前 HTML 文档已完全加载-->
+                    let correct = document.querySelector('.Correct');
+                correct.addEventListener('click',function(){
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML='Correct';
+                });
+
+                let incorrect = document.querySelectorAll('.Incorrect');    <!--这样得到nodelist 需要循环遍历每个元素执行操作-->
+                for(let i = 0; i < incorrect.length; i++){
+                    incorrect[i].addEventListener('click',function(){
+                        incorrect[i].style.backgroundColor = 'red';
+                        document.querySelector('#feedback1').innerHTML='Incorrect';
+                    })
+                }
+
+                document.querySelector('#chans').addEventListener('click',function(){
+                    let input = document.querySelector('input');
+                    if(input.value === 'dog'){
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#feedback2').innerHTML='Correct';
+                    }else{
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#feedback2').innerHTML='Incorrect';
+                    }
+                })
+            })
+
+
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr> <!--这就是一个水平分界线而且它会自动关闭-->
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the approximate ratio of people to sheep in New Zealand</h3>
+                <button class="Incorrect">6 people per 1 sheep</button>
+                <button class="Incorrect">3 people per 1 sheep</button>
+                <button class="Correct">1 people per 1 sheep</button>
+                <button class="Incorrect">1 people per 3 sheep</button>
+                <button class="Incorrect">6 people per 6 sheep</button>
+                <h4 id="feedback1"></h4>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>Cat or dog?</h3>
+                <input type="text">
+                <button id="chans">Check answer</button>
+                <h4 id="feedback2"></h4>
+            </div>
+        </div>
+    </body>
+</html>
